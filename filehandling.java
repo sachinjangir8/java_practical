@@ -1,3 +1,4 @@
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -29,6 +30,21 @@ public class filehandling {
         }
 
         System.out.println("now the number of vowels in file is");
-        
+        try {
+            FileReader reader=new FileReader(fileName);
+            int vowelCount=0;
+            int c;
+            while((c=reader.read())!=-1){
+                char ch=(char)c;
+                if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'){
+                    vowelCount++;
+                }
+            }
+            System.out.println(vowelCount);
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
